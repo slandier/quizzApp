@@ -1,3 +1,15 @@
 page-options {
-
+  .wrapper {
+    margin-top: 3em;
+    button {
+      width: 48%;
+      &#title_button {
+        background-color: grey;
+      }
+      &#option_button {
+        height: 3.5em;
+      }
+    }
+  }
 }
+
