@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the OptionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +8,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'options.html',
 })
 export class OptionsPage {
+  buttons = [
+    {title: 'Niveau', options:['facile', 'moyen', 'difficile'] },
+    {title: 'Thème',options:['n\'importe', 'sport', 'culture générale'] },
+    {title: 'Effets', options:['sons et vibrations', 'vibration', 'aucun'] }
+  ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OptionsPage');
   }
+
+  // changeOption() {
+
+  // }
+
+
 
 }
