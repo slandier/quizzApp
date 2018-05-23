@@ -14,5 +14,8 @@
 
 
 <ion-content padding>
-
+<div class="wrapper" *ngFor="let btn of buttons">
+<button ion-button large id="title_button">{{btn.title}}</button>
+<button ion-button id="option_button">{{btn.options[0]}}</button>
+</div>
 </ion-content>
