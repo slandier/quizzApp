@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { OptionsPage } from '../pages/options/options';
 import { QuestionPage } from '../pages/question/question';
 import { QtoaProvider } from '../providers/qtoa/qtoa';
+import { OptionProvider } from '../providers/option/option';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { QtoaProvider } from '../providers/qtoa/qtoa';
     StatusBar,
     SplashScreen,
     QtoaProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    OptionProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}
