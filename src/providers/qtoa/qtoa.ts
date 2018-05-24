@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class QtoaProvider {
   quizz = {};
   current_nb : number;
-  questions = [
+  private questions = [
     {
       question: "Paris est la capitale française ",
       bool: true,
@@ -51,5 +51,9 @@ export class QtoaProvider {
     this.current_nb = Math.floor(Math.random()*this.questions.length);
     this.quizz = this.questions[this.current_nb];
     return this.quizz;
+  }
+
+  getQuestions(){
+    return this.questions;
   }
 }
