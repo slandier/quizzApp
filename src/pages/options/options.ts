@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OptionProvider } from '../../providers/option/option';
 
 
 @IonicPage()
@@ -20,17 +21,26 @@ export class OptionsPage {
     {title: 'Effets', options:['sons et vibrations', 'vibration', 'aucun'] }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private optionProvider:OptionProvider) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OptionsPage');
+    Object.assign(this.index,this.optionProvider.getIndex())
   }
+
 
   changeOption(optionSelected: string[], option) {
    const keyname = Object.keys(option).toString();
-   if (this.index[keyname] < optionSelected.length -1) this.index[keyname] ++;
-   else this.index[keyname] = 0;
+   if (this.index[keyname] < optionSelected.length -1) {
+     this.index[keyname] ++;
+    this.optionProvider.saveIndex(keyname, this.index[keyname])
+   }
+   else {
+    this.index[keyname] = 0;
+    this.optionProvider.saveIndex(keyname, this.index[keyname]);
+   }
   }
+
+
 
 
 

@@ -10,7 +10,7 @@ import { QtoaProvider } from '../../providers/qtoa/qtoa';
 export class QuestionPage {
   base_questions = this.qtoaProvider.getQuestions();
   current_questions: any[] = [];
-  quizz = {};
+  quizz= {};
   score = 0;
   apples = 3;
   jokers = 2;
@@ -80,8 +80,8 @@ export class QuestionPage {
     console.log(this.resetQuizz());
     //problème du tableau qui se réinitialise
   }
-  
-  
- 
+
+
+
 
 }
