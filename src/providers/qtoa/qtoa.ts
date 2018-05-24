@@ -46,7 +46,7 @@ export class QtoaProvider {
   constructor() {
     
   }
-  
+
   setQuizz() {
     this.current_nb = Math.floor(Math.random()*this.questions.length);
     this.quizz = this.questions[this.current_nb];
