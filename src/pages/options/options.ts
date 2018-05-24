@@ -23,7 +23,7 @@ export class OptionsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OptionsPage');
+
   }
 
   changeOption(optionSelected: string[], option) {
