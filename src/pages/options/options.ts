@@ -8,6 +8,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'options.html',
 })
 export class OptionsPage {
+  index = {
+  indexCurrentLevel : 0,
+  indexCurrentTheme : 0,
+  indexCurrentEffect : 0
+  };
+
   buttons = [
     {title: 'Niveau', options:['facile', 'moyen', 'difficile'] },
     {title: 'Thème',options:['n\'importe', 'sport', 'culture générale'] },
@@ -20,9 +26,13 @@ export class OptionsPage {
     console.log('ionViewDidLoad OptionsPage');
   }
 
-  // changeOption() {
+  changeOption(optionSelected: string[], option) {
+   const keyname = Object.keys(option).toString();
+   if (this.index[keyname] < optionSelected.length -1) this.index[keyname] ++;
+   else this.index[keyname] = 0;
+  }
 
-  // }
+
 
 
 
