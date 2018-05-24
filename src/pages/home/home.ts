@@ -12,12 +12,12 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
-jouer(){
-  this.navCtrl.push(QuestionPage);
-}
-option(){
-  this.navCtrl.push(OptionsPage);
+  jouer(){
+    this.navCtrl.push(QuestionPage);
+  }
+  option(){
+    this.navCtrl.push(OptionsPage);
 
-}
+  }
 
 }
