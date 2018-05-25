@@ -8,22 +8,19 @@
 
 
 <ion-content padding>
-
   <ion-list no-lines>
-
     <ion-item item-start>
-
-        <span item-left>
-          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span>
+        <span item-left> 
+          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span> 
         </span>
         <span item-right>
           <img [ngStyle]="{'display': apples == 3 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
-          <img [ngStyle]="{'display': apples == 3 || 2 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
-          <img [ngStyle]="{'display': apples == 3 || 2 || 1 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
+          <img [ngStyle]="{'display': apples >= 2 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
+          <img [ngStyle]="{'display': apples >= 1 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
         </span>
     </ion-item>
     <ion-item [ngStyle]="{'color': goodAnswer !== 0 ? 'grey' : 'black'}">
-        {{ quizz['question'] }}
+        {{ quizz.question }}
     </ion-item>
     <ion-item>
         <div [ngStyle]="{'display': sticker === 1 ? 'block' : 'none'}">
@@ -37,35 +34,23 @@
           </div>
     </ion-item>
     <ion-item item-end>
-      <p style="color: green;" *ngIf="goodAnswer === 1">Bonne réponse</p>
-      <p style="color: red;" *ngIf="goodAnswer === 2">Mauvaise réponse</p>
-      <p style="color: blue;" *ngIf="notAnswer === true">Joker</p>
+      <p style="color: green;" *ngIf="goodAnswer === 1">Bonne réponse</p>    
+      <p style="color: red;" *ngIf="goodAnswer === 2">Mauvaise réponse</p>  
     </ion-item>
-    
-    <div [ngStyle]="{'display': score_button === true ? 'block' : 'none'}">
-      <ion-item>
-        <p>Partie terminée!</p>
-      </ion-item>
-      <ion-footer>
-        <button (click)= "scorePage()" style="background-color: yellow;" ion-button block >Score final</button>
-      </ion-footer>
-    </div>
 
-    <div [ngStyle]="{'display': hide_footer === true ? 'none' : 'block'}">
-      <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
-        <div style="display: flex;">
-            <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
-            <div style="display:flex;">          
-              <img src="assets/imgs/joker.jpg" (click)="clickOnImg()" style="width:50%; height: auto;">
-              <img src="assets/imgs/joker.jpg" (click)="clickOnImg()" style="width:50%; height: auto;">
-            </div>
-            <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
-        </div>   
-      </ion-footer>
-      <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
-          <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
-      </ion-footer>
-    </div>
-   
+    <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
+      <div style="display: flex;">
+          <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
+          <div style="display:flex;">          
+            <img *ngIf="jokers == 2" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+            <img *ngIf="jokers >= 1" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+          </div>
+          <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
+      </div>   
+    </ion-footer>
+    <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
+        <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
+    </ion-footer>
   </ion-list>
 </ion-content>
+

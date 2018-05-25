@@ -12,7 +12,6 @@ export class QuestionPage {
   base_questions = this.qtoaProvider.getQuestions();
   quizz= {};
   score = this.qtoaProvider.score = 0;
-
   apples = 3;
   jokers = 2;
   hide_button = true;
@@ -24,7 +23,7 @@ export class QuestionPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
   private alertCtrl: AlertController) {
   }
-  
+  //redirection vers page score
   scorePage(){
     this.navCtrl.push(ScorePage);
   }
@@ -35,63 +34,67 @@ export class QuestionPage {
   }
 
   ionViewDidEnter(){
-    this.apples = 3;
-    this.jokers = 2;
     this.hide_button = true;
     this.goodAnswer = 0;
   }
 
-  clickOnJoker(){
-    this.jokers = this.jokers - 1;
-    return this.jokers;
+  //paramètres à changer selon le résultat de la question
+  rightAnswer(){
+    this.goodAnswer = 1;
+    this.sticker = 1;
+    this.score = this.score + 1;
+    this.qtoaProvider.score = this.score;
+  }
+  wrongAnswer(){
+    this.goodAnswer = 2;
+    this.sticker = 2;
+    this.apples --;
+  }
+  answer(){
+    this.notAnswer = true;
+    this.hide_button = false;
+    this.sticker = 2;
+    this.goodAnswer = 3;
   }
 
+  //clic sur le bouton vrai
   clickOnTrue(){
     this.hide_button = false;
     if (this.quizz['bool'] === true){
-      this.goodAnswer = 1;
-      this.sticker = 1;
-      this.score = this.score + 1;
-      this.qtoaProvider.score = this.score;
+      this.rightAnswer();
     }else{
-      this.goodAnswer = 2;
-      this.sticker = 2;
-      this.apples = this.apples - 1;
+      this.wrongAnswer();
     }
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
     this.endOfGame();
     }
   }
 
+  //clic sur le bouton faux
   clickOnFalse(){
     this.hide_button = false;
     if (this.quizz['bool'] === false){
-      this.goodAnswer = 1;
-      this.sticker = 2;
-      this.score = this.score + 1;
-      this.qtoaProvider.score = this.score;
-
+      this.rightAnswer();
     }else{
-      this.goodAnswer = 2;
-      this.sticker = 1;
-      this.apples = this.apples - 1;
+      this.wrongAnswer();
     }
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
     this.endOfGame();
     }
   }
 
+  //affichage du footer de fin de partie
   endOfGame(){
       this.score_button = true;
       this.hide_footer = true;
   }
   
+  //fonctions d'affichage de la liste de question
   resetQuizz() {
     let nb = Math.floor(Math.random()*this.base_questions.length);
     this.quizz = this.base_questions[nb];
     return this.quizz;
   }
-
   clickOnNext(){
     this.goodAnswer = 0;
     this.sticker = 0;
@@ -101,17 +104,15 @@ export class QuestionPage {
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length) {
       this.base_questions = this.qtoaProvider.getQuestions().filter(q => q.question !== this.quizz['question'] );
       this.resetQuizz();
-    }
-    //else if (this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
-    //   this.score_button = true;
-    // }
-    else{
+    }else{
       this.base_questions = this.base_questions.filter(q => q.question !== this.quizz['question'] );
       this.resetQuizz();
     }
-    // console.log(this.base_questions);
-    // console.log(this.resetQuizz());
-    //problème du tableau qui se réinitialise
+  }
+
+  //fonctions de gestion des jokers
+  clickOnJoker(){
+    this.jokers--;
   }
   private showAlert(){
   let alert =this.alertCtrl.create({
@@ -122,25 +123,19 @@ export class QuestionPage {
         role: 'cancel',
         handler: () => {
           this.answer();
+          this.clickOnJoker();
         }
       },
       'NON'
     ]
   });
   alert.present();
-  console.log(alert.title)
-
-}
-
-clickOnImg(){
-    this.showAlert();
   }
-answer(){
-  this.notAnswer = true;
-  this.hide_button = false;
-  this.sticker = 2;
-  this.goodAnswer = 3;
-}
+  clickOnImg(){
+      this.showAlert();
+    }
+
+  
 
 
 }
