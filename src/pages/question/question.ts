@@ -15,16 +15,16 @@ export class QuestionPage {
 
   apples = 3;
   jokers = 2;
-  hide_button = true;
-  goodAnswer = 0;
-  sticker = 0;
+  hide_button = true; // cacher btn "suivant"
+  goodAnswer = 0; // changer couleur q° + texte "bravo.." OU "domage.."
+  sticker = 0; // afficher sticker "vrai" ou "faux"
   score_button = false;
-  hide_footer = false;
-  notAnswer = false;
+  // hide_footer = false;
+  notAnswer = false; // aficher txt joker
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
   private alertCtrl: AlertController) {
   }
-  
+
   scorePage(){
     this.navCtrl.push(ScorePage);
   }
@@ -56,7 +56,7 @@ export class QuestionPage {
     }else{
       this.goodAnswer = 2;
       this.sticker = 2;
-      this.apples = this.apples - 1;
+      this.apples --;
     }
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
     this.endOfGame();
@@ -74,7 +74,7 @@ export class QuestionPage {
     }else{
       this.goodAnswer = 2;
       this.sticker = 1;
-      this.apples = this.apples - 1;
+      this.apples --;
     }
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
     this.endOfGame();
@@ -83,9 +83,9 @@ export class QuestionPage {
 
   endOfGame(){
       this.score_button = true;
-      this.hide_footer = true;
+      // this.hide_footer = true;
   }
-  
+
   resetQuizz() {
     let nb = Math.floor(Math.random()*this.base_questions.length);
     this.quizz = this.base_questions[nb];
@@ -102,17 +102,12 @@ export class QuestionPage {
       this.base_questions = this.qtoaProvider.getQuestions().filter(q => q.question !== this.quizz['question'] );
       this.resetQuizz();
     }
-    //else if (this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
-    //   this.score_button = true;
-    // }
     else{
       this.base_questions = this.base_questions.filter(q => q.question !== this.quizz['question'] );
       this.resetQuizz();
     }
-    // console.log(this.base_questions);
-    // console.log(this.resetQuizz());
-    //problème du tableau qui se réinitialise
   }
+
   private showAlert(){
   let alert =this.alertCtrl.create({
     title:'Passer cette question',
@@ -128,13 +123,12 @@ export class QuestionPage {
     ]
   });
   alert.present();
-  console.log(alert.title)
-
 }
 
 clickOnImg(){
     this.showAlert();
   }
+
 answer(){
   this.notAnswer = true;
   this.hide_button = false;
