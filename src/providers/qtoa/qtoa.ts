@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class QtoaProvider {
   quizz = {};
   current_nb : number;
-  questions: Question[] = [
+  questions = [
     {
       question: "Paris est la capitale française ",
       bool: true,
@@ -42,7 +42,7 @@ export class QtoaProvider {
       moreInfo: "Le nom de la capitale a été empruntée au premier président des Etats-Unis."
     }
   ];
-
+  score: number;
   constructor() { }
 
   setQuizz() {
