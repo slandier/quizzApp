@@ -37,20 +37,29 @@
       <p style="color: green;" *ngIf="goodAnswer === 1">Bravo ! vous avez bien répondu.</p>
       <p style="color: red;" *ngIf="goodAnswer === 2">Oh Nooooon ! votre réponse est mauvaise.</p>
     </ion-item>
-
-    <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
-      <div style="display: flex;">
-          <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
-          <div style="display:flex;">          
-            <img *ngIf="jokers == 2" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
-            <img *ngIf="jokers >= 1" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
-          </div>
-          <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
-      </div>   
-    </ion-footer>
-    <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
-        <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
-    </ion-footer>
+    <div [ngStyle]="{'display': score_button === true ? 'block' : 'none'}">
+          <ion-item>
+            <p>Partie terminée!</p>
+          </ion-item>
+          <ion-footer>
+            <button (click)= "scorePage()" style="background-color: yellow;" ion-button block >Score final</button>
+          </ion-footer>
+    </div>
+    <div [ngStyle]="{'display': hide_footer === true ? 'none' : 'block'}">
+      <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
+        <div style="display: flex;">
+            <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
+            <div style="display:flex;">          
+              <img *ngIf="jokers == 2" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+              <img *ngIf="jokers >= 1" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+            </div>
+            <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
+        </div>   
+      </ion-footer>
+      <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
+          <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
+      </ion-footer>
+    </div>
   </ion-list>
 </ion-content>
 

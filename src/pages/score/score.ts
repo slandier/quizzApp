@@ -13,8 +13,4 @@ export class ScorePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ScorePage');
-  }
-
 }
