@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Fin de partie</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h1><span style="color: red;">Score</span><span style="color: green;">Final</span></h1>
+<ion-list no-lines>
+  <ion-item>{{score}}</ion-item>
+  <ion-item style="display: flex;">
+    <button style="background-color: blue;" ion-button block >Partager</button>
+    <button style="background-color: blue;" ion-button block >Publier</button>
+  </ion-item>
+  <ion-item>
+    <button style="background-color: blue;" ion-button block >Rejouer</button>
+  </ion-item>
+</ion-list>
+
+<ion-footer>
+  <button style="background-color: red;" ion-button block large>Classement</button>
+</ion-footer>
+
+</ion-content>
