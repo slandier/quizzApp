@@ -14,15 +14,16 @@ export class QuestionPage {
   score = this.qtoaProvider.score = 0;
   apples = 3;
   jokers = 2;
-  hide_button = true;
-  goodAnswer = 0;
-  sticker = 0;
+  hide_button = true; // cacher btn "suivant"
+  goodAnswer = 0; // changer couleur q° + texte "bravo.." OU "domage.."
+  sticker = 0; // afficher sticker "vrai" ou "faux"
   score_button = false;
-  hide_footer = false;
-  notAnswer = false;
+  // hide_footer = false;
+  notAnswer = false; // aficher txt joker
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
   private alertCtrl: AlertController) {
   }
+
   //redirection vers page score
   scorePage(){
     this.navCtrl.push(ScorePage);
@@ -86,7 +87,7 @@ export class QuestionPage {
   //affichage du footer de fin de partie
   endOfGame(){
       this.score_button = true;
-      this.hide_footer = true;
+      // this.hide_footer = true;
   }
   
   //fonctions d'affichage de la liste de question
@@ -114,6 +115,7 @@ export class QuestionPage {
   clickOnJoker(){
     this.jokers--;
   }
+
   private showAlert(){
   let alert =this.alertCtrl.create({
     title:'Passer cette question',
@@ -131,11 +133,10 @@ export class QuestionPage {
   });
   alert.present();
   }
+  
   clickOnImg(){
       this.showAlert();
     }
-
-  
 
 
 }

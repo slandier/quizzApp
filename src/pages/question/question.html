@@ -10,13 +10,13 @@
 <ion-content padding>
   <ion-list no-lines>
     <ion-item item-start>
-        <span item-left> 
-          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span> 
+        <span item-left>
+          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span>
         </span>
         <span item-right>
-          <img [ngStyle]="{'display': apples == 3 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
-          <img [ngStyle]="{'display': apples >= 2 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
-          <img [ngStyle]="{'display': apples >= 1 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
+          <img  *ngIf="apples === 3" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
+          <img  *ngIf="apples >= 2" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
+          <img  *ngIf="apples >= 1" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
         </span>
     </ion-item>
     <ion-item [ngStyle]="{'color': goodAnswer !== 0 ? 'grey' : 'black'}">
@@ -34,8 +34,8 @@
           </div>
     </ion-item>
     <ion-item item-end>
-      <p style="color: green;" *ngIf="goodAnswer === 1">Bonne réponse</p>    
-      <p style="color: red;" *ngIf="goodAnswer === 2">Mauvaise réponse</p>  
+      <p style="color: green;" *ngIf="goodAnswer === 1">Bravo ! vous avez bien répondu.</p>
+      <p style="color: red;" *ngIf="goodAnswer === 2">Oh Nooooon ! votre réponse est mauvaise.</p>
     </ion-item>
 
     <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
