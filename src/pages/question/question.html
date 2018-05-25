@@ -8,10 +8,13 @@
 
 
 <ion-content padding>
+
   <ion-list no-lines>
+
     <ion-item item-start>
-        <span item-left> 
-          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span> 
+
+        <span item-left>
+          <span style="color: green; font-size: 1.3em;">Score : {{ score }}</span>
         </span>
         <span item-right>
           <img [ngStyle]="{'display': apples == 3 ? 'inline' : 'none'}" src="assets/imgs/pomme.jpg" style="width: 1.5em; height: auto;">
@@ -34,8 +37,9 @@
           </div>
     </ion-item>
     <ion-item item-end>
-      <p style="color: green;" *ngIf="goodAnswer === 1">Bonne réponse</p>    
-      <p style="color: red;" *ngIf="goodAnswer === 2">Mauvaise réponse</p>  
+      <p style="color: green;" *ngIf="goodAnswer === 1">Bonne réponse</p>
+      <p style="color: red;" *ngIf="goodAnswer === 2">Mauvaise réponse</p>
+      <p style="color: blue;" *ngIf="notAnswer === true">Joker</p>
     </ion-item>
     
     <div [ngStyle]="{'display': score_button === true ? 'block' : 'none'}">
@@ -52,8 +56,8 @@
         <div style="display: flex;">
             <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
             <div style="display:flex;">          
-              <img src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
-              <img src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+              <img src="assets/imgs/joker.jpg" (click)="clickOnImg()" style="width:50%; height: auto;">
+              <img src="assets/imgs/joker.jpg" (click)="clickOnImg()" style="width:50%; height: auto;">
             </div>
             <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
         </div>   
@@ -62,7 +66,6 @@
           <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
       </ion-footer>
     </div>
-    
+   
   </ion-list>
 </ion-content>
-

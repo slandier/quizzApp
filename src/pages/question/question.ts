@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { QtoaProvider } from '../../providers/qtoa/qtoa';
 import { ScorePage } from '../score/score';
-
-
+import { AlertController } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-question',
@@ -21,8 +20,9 @@ export class QuestionPage {
   sticker = 0;
   score_button = false;
   hide_footer = false;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider) {
+  notAnswer = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
+  private alertCtrl: AlertController) {
   }
   
   scorePage(){
@@ -96,6 +96,8 @@ export class QuestionPage {
     this.goodAnswer = 0;
     this.sticker = 0;
     this.hide_button = true;
+    this.notAnswer = false;
+
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length) {
       this.base_questions = this.qtoaProvider.getQuestions().filter(q => q.question !== this.quizz['question'] );
       this.resetQuizz();
@@ -111,8 +113,34 @@ export class QuestionPage {
     // console.log(this.resetQuizz());
     //problème du tableau qui se réinitialise
   }
+  private showAlert(){
+  let alert =this.alertCtrl.create({
+    title:'Passer cette question',
+    buttons: [
+      {
+        text: 'OUI',
+        role: 'cancel',
+        handler: () => {
+          this.answer();
+        }
+      },
+      'NON'
+    ]
+  });
+  alert.present();
+  console.log(alert.title)
 
+}
 
+clickOnImg(){
+    this.showAlert();
+  }
+answer(){
+  this.notAnswer = true;
+  this.hide_button = false;
+  this.sticker = 2;
+  this.goodAnswer = 3;
+}
 
 
 }
