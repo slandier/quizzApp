@@ -20,7 +20,7 @@
         </span>
     </ion-item>
     <ion-item [ngStyle]="{'color': goodAnswer !== 0 ? 'grey' : 'black'}">
-        {{ quizz['question'] }}
+        {{ quizz.question }}
     </ion-item>
     <ion-item>
         <div [ngStyle]="{'display': sticker === 1 ? 'block' : 'none'}">
@@ -41,15 +41,16 @@
     <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
       <div style="display: flex;">
           <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
-          <div style="display:flex;">
-            <img src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
-            <img src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+          <div style="display:flex;">          
+            <img *ngIf="jokers == 2" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
+            <img *ngIf="jokers >= 1" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
           </div>
           <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
-      </div>
+      </div>   
     </ion-footer>
     <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
         <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
     </ion-footer>
   </ion-list>
 </ion-content>
+

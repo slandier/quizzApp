@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 export class QtoaProvider {
   quizz = {};
   current_nb : number;
+  
+
   questions = [
     {
       question: "Paris est la capitale française ",
