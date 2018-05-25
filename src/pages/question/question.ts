@@ -15,11 +15,11 @@ export class QuestionPage {
   apples = 3;
   jokers = 2;
   hide_button = true; // cacher btn "suivant"
-  goodAnswer = 0; // changer couleur q° + texte "bravo.." OU "domage.."
+  goodAnswer = 0; // changer couleur q° + texte "bravo.." OU "dommage.."
   sticker = 0; // afficher sticker "vrai" ou "faux"
   score_button = false;
-  // hide_footer = false;
-  notAnswer = false; // aficher txt joker
+  hide_footer = false;
+  notAnswer = false; // afficher txt joker
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
   private alertCtrl: AlertController) {
   }
@@ -66,9 +66,7 @@ export class QuestionPage {
     }else{
       this.wrongAnswer();
     }
-    if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
-    this.endOfGame();
-    }
+    this.noMoreQuestion();
   }
 
   //clic sur le bouton faux
@@ -79,15 +77,20 @@ export class QuestionPage {
     }else{
       this.wrongAnswer();
     }
+    this.noMoreQuestion();
+  }
+
+  //s'il reste plus de questions
+  noMoreQuestion(){
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
-    this.endOfGame();
+      this.endOfGame();
     }
   }
 
   //affichage du footer de fin de partie
   endOfGame(){
-      this.score_button = true;
-      // this.hide_footer = true;
+    this.score_button = true;
+    this.hide_footer = true;
   }
   
   //fonctions d'affichage de la liste de question
