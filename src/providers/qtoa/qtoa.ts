@@ -43,7 +43,8 @@ export class QtoaProvider {
     }
   ];
 
-  constructor() { }
+
+constructor() { }
 
   setQuizz() {
     this.current_nb = Math.floor(Math.random()*this.questions.length);
@@ -54,4 +55,5 @@ export class QtoaProvider {
   getQuestions(){
     return this.questions;
   }
+  
 }

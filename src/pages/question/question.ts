@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { QtoaProvider } from '../../providers/qtoa/qtoa';
-
+import { AlertController } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-question',
@@ -17,7 +17,9 @@ export class QuestionPage {
   hide_button = true;
   goodAnswer = 0;
   sticker = 0;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider) {
+  notAnswer = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
+  private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -71,6 +73,7 @@ export class QuestionPage {
     this.hide_button = false;
     this.goodAnswer = 0;
     this.sticker = 0;
+    this.notAnswer = false;
     if(this.base_questions.length === this.qtoaProvider.getQuestions().length) {
       this.current_questions = this.base_questions.filter(q => q.question !== this.quizz['question'] );
     }else{
@@ -80,8 +83,34 @@ export class QuestionPage {
     console.log(this.resetQuizz());
     //problème du tableau qui se réinitialise
   }
+  private showAlert(){
+  let alert =this.alertCtrl.create({
+    title:'Passer cette question',
+    buttons: [
+      {
+        text: 'OUI',
+        role: 'cancel',
+        handler: () => {
+          this.answer();
+        }
+      },
+      'NON'
+    ]
+  });
+  alert.present();
+  console.log(alert.title)
 
+}
 
+clickOnImg(){
+    this.showAlert();
+  }
+answer(){
+  this.notAnswer = true;
+  this.hide_button = false;
+  this.sticker = 2;
+  this.goodAnswer = 3;
+}
 
 
 }
