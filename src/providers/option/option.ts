@@ -1,29 +1,45 @@
 import { Injectable } from '@angular/core';
+import { indexOption } from '../../models/indexOption.inerface';
 
-/*
-  Generated class for the OptionProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class OptionProvider {
-  indexSave =
-  {
-    indexCurrentLevel : 0,
-    indexCurrentTheme : 0,
-    indexCurrentEffect : 0
-  };
+  private CurrentLevel:string;
+  private CurrentTheme:string;
+  private CurrentEffect:string;
+  indexSave:indexOption = {indexCurrentLevel : 0, indexCurrentTheme : 0, indexCurrentEffect : 0};
 
   constructor() { }
 
-  saveIndex(key:string, value:number) {
-    return this.indexSave[key] = value;
-   }
+saveIndex(key: string, value: number) {
+  return this.indexSave[key] = value;
+}
 
-  getIndex() {
-    return this.indexSave;
+getIndex(): Object {
+  return this.indexSave;
+}
+
+saveOptions(categoryOption: string, value: string):void {
+  const _this = this;
+  for (let i in this.indexSave) {
+    if (i === categoryOption) {
+      _this[categoryOption.slice(5)] = value;
+    }
   }
-  
+}
+
+  getCurrentLevel():string {
+    return this.CurrentLevel;
+  }
+
+  getCurrentTheme():string {
+    return this.CurrentTheme;
+  }
+
+  getCurrentEffect():string {
+    return this.CurrentEffect;
+  }
+
+
 
 }

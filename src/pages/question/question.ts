@@ -21,8 +21,7 @@ export class QuestionPage {
   hide_footer = false;
   notAnswer = false; // afficher txt joker
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
-  private alertCtrl: AlertController) {
-  }
+  private alertCtrl: AlertController) { }
 
   //redirection vers page score
   scorePage(){
@@ -46,11 +45,13 @@ export class QuestionPage {
     this.score = this.score + 1;
     this.qtoaProvider.score = this.score;
   }
+
   wrongAnswer(){
     this.goodAnswer = 2;
     this.sticker = 2;
     this.apples --;
   }
+
   answer(){
     this.notAnswer = true;
     this.hide_button = false;
@@ -92,7 +93,7 @@ export class QuestionPage {
     this.score_button = true;
     this.hide_footer = true;
   }
-  
+
   //fonctions d'affichage de la liste de question
   resetQuizz() {
     let nb = Math.floor(Math.random()*this.base_questions.length);
@@ -136,7 +137,7 @@ export class QuestionPage {
   });
   alert.present();
   }
-  
+
   clickOnImg(){
       this.showAlert();
     }
