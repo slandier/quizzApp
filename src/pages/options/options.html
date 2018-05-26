@@ -15,16 +15,16 @@
 
 <ion-content padding>
   <div class="wrapper">
-    <button ion-button large id="title_button">{{buttons[0].title}}</button>
-    <button ion-button (click)="changeOption(buttons[0].options, {indexCurrentLevel:index.indexCurrentLevel})" id="option_button">{{buttons[0].options[index.indexCurrentLevel]}}</button>
+    <button ion-button large id="title_button">{{buttonsConfig[0].title}}</button>
+    <button ion-button (click)="changeOption(buttonsConfig[0].options, {indexCurrentLevel:indexOption.indexCurrentLevel})" id="option_button">{{buttonsConfig[0].options[indexOption.indexCurrentLevel]}}</button>
   </div>
   <div class="wrapper">
-    <button ion-button large id="title_button">{{buttons[1].title}}</button>
-    <button ion-button (click)="changeOption(buttons[1].options, {indexCurrentTheme:index.indexCurrentTheme})" id="option_button">{{buttons[1].options[index.indexCurrentTheme]}}</button>
+    <button ion-button large id="title_button">{{buttonsConfig[1].title}}</button>
+    <button ion-button (click)="changeOption(buttonsConfig[1].options, {indexCurrentTheme:indexOption.indexCurrentTheme})" id="option_button">{{buttonsConfig[1].options[indexOption.indexCurrentTheme]}}</button>
   </div>
   <div class="wrapper">
-    <button ion-button large id="title_button">{{buttons[2].title}}</button>
-    <button ion-button (click)="changeOption(buttons[2].options, {indexCurrentEffect:index.indexCurrentEffect})" id="option_button">{{buttons[2].options[index.indexCurrentEffect]}}</button>
+    <button ion-button large id="title_button">{{buttonsConfig[2].title}}</button>
+    <button ion-button (click)="changeOption(buttonsConfig[2].options, {indexCurrentEffect:indexOption.indexCurrentEffect})" id="option_button">{{buttonsConfig[2].options[indexOption.indexCurrentEffect]}}</button>
   </div>
 
 </ion-content>
