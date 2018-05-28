@@ -1,4 +1,4 @@
-interface Question {
+export interface Question {
   question: string;
   bool: boolean;
   answer: string;

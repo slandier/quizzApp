@@ -72,7 +72,9 @@ export class QuestionPage {
     }else{
       this.wrongAnswer();
     }
-    this.noMoreQuestion();
+    if(this.base_questions.length === 1) {
+      this.endOfGame();
+    }
   }
 
   //clic sur le bouton faux
@@ -83,12 +85,7 @@ export class QuestionPage {
     }else{
       this.wrongAnswer();
     }
-    this.noMoreQuestion();
-  }
-
-  //s'il reste plus de questions
-  noMoreQuestion(){
-    if(this.base_questions.length === this.qtoaProvider.getQuestions().length -4){
+    if(this.base_questions.length === 1) {
       this.endOfGame();
     }
   }
@@ -101,15 +98,12 @@ export class QuestionPage {
 
   //fonctions d'affichage de la liste de question
   resetQuizz() {
-    if(this.base_questions.length != 0) {
       let nb = Math.floor(Math.random()*this.base_questions.length);
       this.quizz = this.base_questions[nb];
       return this.quizz;
-    }
-    else{
-      this.endOfGame();
-    }
   }
+
+
   clickOnNext(){
     this.goodAnswer = 0;
     this.sticker = 0;
