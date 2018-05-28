@@ -3,13 +3,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { QtoaProvider } from '../../providers/qtoa/qtoa';
 import { ScorePage } from '../score/score';
 import { AlertController } from 'ionic-angular';
+import { Shake } from '@ionic-native/shake';
+
 @IonicPage()
 @Component({
   selector: 'page-question',
   templateUrl: 'question.html',
 })
 export class QuestionPage {
-  base_questions = this.qtoaProvider.getQuestions();
+  base_questions;
   quizz= {};
   score = this.qtoaProvider.score = 0;
   apples = 3;
@@ -20,6 +22,7 @@ export class QuestionPage {
   score_button = false;
   hide_footer = false;
   notAnswer = false; // afficher txt joker
+  test = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public qtoaProvider: QtoaProvider,
   private alertCtrl: AlertController) { }
 
@@ -29,8 +32,10 @@ export class QuestionPage {
   }
 
   ionViewDidLoad() {
-   this.qtoaProvider.setQuizz();
-   this.quizz = this.qtoaProvider.quizz;
+    this.qtoaProvider.setQuizz();
+    this.quizz = this.qtoaProvider.quizz;
+    this.base_questions = this.qtoaProvider.getQuestions();
+
   }
 
   ionViewDidEnter(){
@@ -83,7 +88,7 @@ export class QuestionPage {
 
   //s'il reste plus de questions
   noMoreQuestion(){
-    if(this.base_questions.length === this.qtoaProvider.getQuestions().length - 4){
+    if(this.base_questions.length === this.qtoaProvider.getQuestions().length -4){
       this.endOfGame();
     }
   }
@@ -96,9 +101,14 @@ export class QuestionPage {
 
   //fonctions d'affichage de la liste de question
   resetQuizz() {
-    let nb = Math.floor(Math.random()*this.base_questions.length);
-    this.quizz = this.base_questions[nb];
-    return this.quizz;
+    if(this.base_questions.length != 0) {
+      let nb = Math.floor(Math.random()*this.base_questions.length);
+      this.quizz = this.base_questions[nb];
+      return this.quizz;
+    }
+    else{
+      this.endOfGame();
+    }
   }
   clickOnNext(){
     this.goodAnswer = 0;

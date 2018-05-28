@@ -20,7 +20,7 @@ export class OptionsPage {
 
   buttonsConfig: buttonOption[] = [
     {title: 'Niveau', options:['facile', 'moyen', 'difficile'] },
-    {title: 'Thème',options:['n\'importe', 'sport', 'culture générale'] },
+    {title: 'Thème',options:['tous', 'sport', 'culture générale'] },
     {title: 'Effets', options:['sons et vibrations', 'vibration', 'aucun'] }
   ];
 

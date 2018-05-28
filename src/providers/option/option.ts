@@ -21,11 +21,8 @@ getIndex(): Object {
 
 saveOptions(categoryOption: string, value: string):void {
   const _this = this;
-  for (let i in this.indexSave) {
-    if (i === categoryOption) {
-      _this[categoryOption.slice(5)] = value;
-    }
-  }
+  // on retire 'index' afin de pouvoir faire correspondre "value" avec la Bonne variable
+  _this[categoryOption.slice(5)] = value;
 }
 
   getCurrentLevel():string {
@@ -40,6 +37,6 @@ saveOptions(categoryOption: string, value: string):void {
     return this.CurrentEffect;
   }
 
-
+// aller sur une autre branch et faire relier loption saisi avec le choix des questions ect...
 
 }

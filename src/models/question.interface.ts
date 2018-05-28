@@ -3,5 +3,5 @@ interface Question {
   bool: boolean;
   answer: string;
   moreInfo: string;
-  theme: string;
+  theme?: string;
 }
