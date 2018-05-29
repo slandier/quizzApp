@@ -1,7 +1,7 @@
-interface Question {
+export interface Question {
   question: string;
   bool: boolean;
   answer: string;
   moreInfo: string;
-  theme: string;
+  theme?: string;
 }

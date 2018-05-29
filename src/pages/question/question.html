@@ -39,7 +39,7 @@
     </ion-item>
     <div [ngStyle]="{'display': score_button === true ? 'block' : 'none'}">
           <ion-item>
-            <p>Partie terminée!</p>
+            <h2>Partie terminée!</h2>
           </ion-item>
           <ion-footer>
             <button (click)= "scorePage()" style="background-color: yellow;" ion-button block >Score final</button>
@@ -49,12 +49,12 @@
       <ion-footer [ngStyle]="{'display': hide_button === true ? 'block' : 'none'}">
         <div style="display: flex;">
             <button (click)="clickOnTrue()" style="background-color: green;" ion-button block large>Vrai</button>
-            <div style="display:flex;">          
+            <div style="display:flex;">
               <img *ngIf="jokers == 2" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
               <img *ngIf="jokers >= 1" (click)="showAlert()" src="assets/imgs/joker.jpg" style="width:50%; height: auto;">
             </div>
             <button (click)="clickOnFalse()" style="background-color: red;" ion-button block large>Faux</button>
-        </div>   
+        </div>
       </ion-footer>
       <ion-footer [ngStyle]="{'display': hide_button === true ? 'none' : 'block'}">
           <button (click)="clickOnNext()" style="background-color: blue;" ion-button block >Suivant</button>
